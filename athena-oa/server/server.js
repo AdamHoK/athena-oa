@@ -16,5 +16,5 @@ var server = app.listen(process.env.PORT || 8080, function () {
 });
 
 app.get("/api/products", function (req, res) {
-    res.status(200).json(athenaData.products.at(0));
+    res.status(200).json(athenaData.products);
 });
