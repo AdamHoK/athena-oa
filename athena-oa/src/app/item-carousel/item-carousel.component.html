@@ -1,13 +1,13 @@
 
-<div class="grid-container">
+<div class="">
     <div class="carousel-gird-container" *ngIf="customOptions">
-        <div class="owl-nav">
-            <button (click)="owlCar.prev()" class="owl-prev">
+        <div class="owl-nav" >
+            <button (click)="owlCar.prev()" class="owl-prev" [hidden]="isStart">
                 <i class="bi bi-chevron-left"></i>
             </button>
         </div>
         <div>
-            <owl-carousel-o [options]="customOptions" #owlCar>
+            <owl-carousel-o [options]="customOptions" (changed)="getData($event)" #owlCar>
                 <ng-template *ngIf="!mobile" carouselSlide>
                     <div class="bubble">
                         <div class="shop-all-container">
@@ -22,7 +22,7 @@
             </owl-carousel-o>
         </div>
         <div class="owl-nav">
-            <button (click)="owlCar.next()" class="owl-next">
+            <button (click)="owlCar.next()" class="owl-next" [hidden]="isEnd">
                 <i class="bi bi-chevron-right"></i>
             </button>
         </div>

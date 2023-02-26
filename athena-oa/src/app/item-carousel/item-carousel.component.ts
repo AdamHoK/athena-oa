@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { OwlOptions, CarouselComponent } from 'ngx-owl-carousel-o';
+import { OwlOptions, CarouselComponent, SlidesOutputData } from 'ngx-owl-carousel-o';
 import { IProduct } from 'src/models/IProduct';
 import { ProductInfoService } from '../shared/product-info.service';
 
@@ -13,6 +13,8 @@ export class ItemCarouselComponent implements OnInit {
   products: IProduct[] = [];
   customOptions: OwlOptions | undefined;
   mobile: boolean = false;
+  isEnd: boolean = false;
+  isStart: boolean = true;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -25,6 +27,12 @@ export class ItemCarouselComponent implements OnInit {
   constructor(private productService: ProductInfoService){
   }
   
+  getData(data: SlidesOutputData){
+    console.log(data);
+    this.isStart = data.startPosition===0;
+    this.isEnd = Number(data.slides?.pop()?.id.split("-").at(2)) === this.products.length;
+    
+  }
 
   refreshOptions(){
     
@@ -35,7 +43,7 @@ export class ItemCarouselComponent implements OnInit {
         touchDrag: true,
         pullDrag: true,
         dots: false,
-        navSpeed: 700,
+        navSpeed: 1000,
         responsive: {
           0: {
             items: 1

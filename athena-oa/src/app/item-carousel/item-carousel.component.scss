@@ -2,8 +2,13 @@
 
 .carousel-gird-container {
     display: grid;
+    position:absolute;
+    top: 1vh;
     grid-template-columns: 10% 80% 10%;
     align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: #fffffaaa;
 }
 
 .owl-nav {
