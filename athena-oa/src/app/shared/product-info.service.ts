@@ -10,7 +10,6 @@ export class ProductInfoService {
 
   constructor(private http: HttpClient) { }
 
-  // Get the status
   getProducts() {
     return this.http.get(this.productsUrl);
   }
