@@ -18,8 +18,7 @@ export class ItemCarouselComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    console.log(event.currentTarget.innerWidth);
-
+    
     this.mobile = event.currentTarget.innerWidth<765;
     this.refreshOptions();
   }
