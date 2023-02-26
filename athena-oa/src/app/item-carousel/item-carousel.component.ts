@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { OwlOptions, CarouselComponent } from 'ngx-owl-carousel-o';
 import { IProduct } from 'src/models/IProduct';
 import { ProductInfoService } from '../shared/product-info.service';
 
@@ -10,14 +11,53 @@ import { ProductInfoService } from '../shared/product-info.service';
 export class ItemCarouselComponent implements OnInit {
   
   products: IProduct[] = [];
+  customOptions: OwlOptions | undefined;
+  mobile: boolean = false;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    console.log(event.currentTarget.innerWidth);
+
+    this.mobile = event.currentTarget.innerWidth<765;
+    this.refreshOptions();
+  }
 
   constructor(private productService: ProductInfoService){
   }
+  
+
+  refreshOptions(){
+    
+      this.customOptions = {
+        margin: 20,
+        loop: this.mobile,
+        mouseDrag: true,
+        touchDrag: true,
+        pullDrag: true,
+        dots: false,
+        navSpeed: 700,
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 2
+          },
+          900: {
+            items: 3
+          }
+        },
+      }
+    }
+
 
   ngOnInit(): void {
+
+    this.mobile = window.innerWidth < 765;
+
     this.productService.getProducts().subscribe(
-      (v) => {
-        (JSON.parse(JSON.stringify(v))).forEach((value: JSON) => {
+      (response) => {
+        (JSON.parse(JSON.stringify(response))).forEach((value: JSON) => {
           let product: IProduct = {
             name: '',
             price: 0.0,
@@ -32,6 +72,13 @@ export class ItemCarouselComponent implements OnInit {
         
       }
     );
+
+    setTimeout(() => this.refreshOptions(), 300);
+
+    // setTimeout( () => {
+    //   console.log("HELLO")}
+    // , 300);
+    // Had to add a timeout here because otherwise owl-carousel would not be responsive
   }
 
 }

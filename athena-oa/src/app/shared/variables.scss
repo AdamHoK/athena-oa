@@ -1,0 +1,10 @@
+$textBlue: #004495;
+
+// @include font-face("BrownRegular", "../../assets/fonts/brown-regular");
+
+@font-face {
+	font-family: "Brown-Regular";
+	src: url("../../assets/fonts/brown-regular/brown-regular-webfont.woff") format("woff"),
+		 url("../../assets/fonts/brown-regular/brown-regular-webfont.woff2") format("woff2")
+}
+		 

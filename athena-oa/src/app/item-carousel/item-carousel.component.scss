@@ -1,0 +1,69 @@
+@import '../shared/variables.scss';
+
+.carousel-gird-container {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    align-items: center;
+}
+
+.owl-nav {
+    display: grid;
+    place-items: center;
+}
+
+.owl-prev, .owl-next {
+    border: 1px solid $textBlue;
+    color: $textBlue;
+    background-color: transparent;
+    border-radius: 50%;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.owl-prev:hover, .owl-next:hover {
+    color: #fff;
+    background-color: $textBlue;
+}
+
+.shop-all {
+    font-family: 'Brown-Regular';
+    text-decoration: none;
+    color: $textBlue;
+}
+
+.meet-favorites {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 1.04;
+}
+
+.bubble {
+    display: block;
+    text-align: center;
+    margin: 39px auto auto auto;
+
+    border: 1px solid transparent;
+    max-width: 325px;
+    max-height: 325px;
+    height: 40vw;
+    width: 40vw;
+
+    border-radius: 50%;
+    background: #e9f5fa;
+
+    .shop-all-container {
+        position: relative;
+        color: $textBlue;
+        top: 35%;
+    }
+}
+
+.bubble:hover {
+    .shop-all-container .shop-all{
+        padding-bottom: 5px;
+        border-bottom: 1px solid $textBlue;
+    }
+
+    cursor: pointer;
+}

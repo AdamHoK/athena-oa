@@ -1,0 +1,30 @@
+@import '../shared/variables.scss';
+
+
+p {
+    font-family: 'Brown-Regular';
+    color: $textBlue;
+}
+
+.filled {
+    color: $textBlue;
+}
+
+.product-image {
+    max-height: 300px;
+    max-width: 305px;
+    transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+
+.vertical-line {
+    border-left: 2px solid $textBlue;
+    text-align: end;
+    height: 20px;
+}
+
+

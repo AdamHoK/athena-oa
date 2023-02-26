@@ -1,7 +1,16 @@
-<div>
-        {{ product?.name }}<br>
-        {{ product?.price }}<br>
-        {{ product?.imageUrl }}<br>
-        {{ product?.description }}<br>
-        {{ product?.rating }}<br>
+<div class="d-flex flex-column align-items-center gap-2 ">
+    <ng-template #ionStarTemplate let-fill="fill">
+        <ng-icon class="filled" [name]="whichStar(fill)"></ng-icon>
+    </ng-template>
+
+    <img class="product-image" src="{{ product?.imageUrl }}" alt=""><br>
+    <div class="d-flex flex-row justify-content-center gap-2">
+        <p>{{ product?.name }} |</p> 
+        <p>${{ product?.price }}</p>
+    </div>
+    <div class="d-flex flex-column align-items-center text-center">
+        <p>{{ product?.description }}</p>
+        <ngb-rating class="custom-rating" [(rate)]="starRating" [starTemplate]="ionStarTemplate" [readonly]="true" [max]="5"></ngb-rating>
+    </div>
+
 </div>
