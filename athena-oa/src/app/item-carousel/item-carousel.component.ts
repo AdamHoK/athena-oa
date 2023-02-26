@@ -28,14 +28,12 @@ export class ItemCarouselComponent implements OnInit {
   }
   
   getData(data: SlidesOutputData){
-    console.log(data);
     this.isStart = data.startPosition===0;
     this.isEnd = Number(data.slides?.pop()?.id.split("-").at(2)) === this.products.length;
     
   }
 
   refreshOptions(){
-    
       this.customOptions = {
         margin: 20,
         loop: this.mobile,
@@ -82,10 +80,6 @@ export class ItemCarouselComponent implements OnInit {
     );
 
     setTimeout(() => this.refreshOptions(), 300);
-
-    // setTimeout( () => {
-    //   console.log("HELLO")}
-    // , 300);
     // Had to add a timeout here because otherwise owl-carousel would not be responsive
   }
 
